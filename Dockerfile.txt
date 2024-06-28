@@ -1,0 +1,8 @@
+FROM openjdk:17-alpine
+COPY build/libs/WeatherAPIWrapper.jar /
+COPY entrypoint.sh /
+
+WORKDIR /
+
+
+ENTRYPOINT ["/entrypoint.sh"]

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+missing_vars=""
+
+if [[ -z OPEN_WEATHER_URL ]] ; then
+    missing_vars="$missing_vars OPEN_WEATHER_URL"
+fi
+
+if [[ -z API_JAR_FLAGS ]] ; then
+    missing_vars="$missing_vars API_JAR_FLAGS"
+fi
+
+if [[ -z API_PORT ]] ; then
+    missing_vars="$missing_vars API_PORT"
+fi
+
+if [[ $missing_vars ]] ; then
+    echo "missing environment variables: $missing_vars"
+    exit 1
+fi
+
+
+
+java $API_JAR_FLAGS -Dserver.port=$API_PORT -jar /WeatherAPIWrapper.jar
